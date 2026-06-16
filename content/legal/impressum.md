@@ -1,40 +1,26 @@
 ---
-title: "Impressum"
+title: Impressum
 ---
 
-## Angaben gemäß § 5 TMG
+# Impressum
 
-**XF2 GmbH**
-Musterstraße 1
-12345 Musterstadt
-Deutschland
+**Angaben gemäß § 5 DDG (TMG)**
 
-**Vertreten durch:**
-Max Mustermann (Geschäftsführer)
+XFLOOW OCEAN TEC GmbH  
+Waidmannsdorferstrasse 83
+9020 Klagenfurt
+AT
 
-**Kontakt:**
-E-Mail: hello@xf2.io
+**Vertreten durch:** Patrizia Giovanniello
 
-**Registereintrag:**
-Eintragung im Handelsregister
-Registergericht: Amtsgericht Musterstadt
-Registernummer: HRB 12345
+**Kontakt:**  
+E-Mail: hello@xfloow.com
 
-**Umsatzsteuer-ID:**
-Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:
-DE000000000
+**USt-IdNr.:** ATU80726225
 
-## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+**Registereintrag:**  
+Registernummer: FN628032B  
+Registergericht: Landesgericht Klagenfurt
 
-Max Mustermann
-XF2 GmbH
-Musterstraße 1
-12345 Musterstadt
-
-## Haftungsausschluss
-
-Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
-
-## Urheberrecht
-
-Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+**Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:**  
+Patrizia Giovanniello, Waidmannsdorferstrasse 83

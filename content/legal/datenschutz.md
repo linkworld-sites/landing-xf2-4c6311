@@ -1,43 +1,28 @@
 ---
-title: "Datenschutzerklärung"
+title: Datenschutz
 ---
 
-## 1. Datenschutz auf einen Blick
+# Datenschutzerklärung
 
-### Allgemeine Hinweise
+Der Schutz Ihrer personenbezogenen Daten ist uns wichtig. Wir verarbeiten Ihre Daten ausschließlich im Rahmen der gesetzlichen Bestimmungen (DSGVO, BDSG).
 
-Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+## Verantwortlicher
 
-### Datenerfassung auf unserer Website
+XFLOOW OCEAN TEC GmbH  
+Waidmannsdorferstrasse 83
+9020 Klagenfurt
+AT
 
-**Wer ist verantwortlich für die Datenerfassung auf dieser Website?**
+E-Mail: hello@xfloow.com
 
-Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.
+## Ihre Rechte
 
-## 2. Hosting
+Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO) sowie ein Beschwerderecht bei einer Aufsichtsbehörde.
 
-Diese Website wird extern gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert.
+## Hosting & Server-Logs
 
-## 3. Cookies
+Beim Besuch dieser Website werden technisch notwendige Daten (IP-Adresse, Zeitpunkt, abgerufene Seite) verarbeitet — Rechtsgrundlage Art. 6 Abs. 1 lit. f DSGVO.
 
-Unsere Website verwendet Cookies. Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden. Sie richten keinen Schaden an.
+## Cookies & Reichweitenmessung
 
-Wir verwenden Cookies, um unsere Website nutzerfreundlich zu gestalten. Einige Cookies bleiben auf Ihrem Gerät gespeichert, bis Sie diese löschen (persistente Cookies). Diese ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.
-
-Wenn Sie dies nicht wünschen, können Sie Ihren Browser so einrichten, dass er Sie über das Setzen von Cookies informiert und Sie dies nur im Einzelfall erlauben.
-
-## 4. Analyse-Tools und Werbung
-
-Wir setzen nur Analyse-Tools nach Ihrer ausdrücklichen Einwilligung ein. Sie können Ihre Einwilligung jederzeit über unser Cookie-Banner widerrufen.
-
-## 5. Ihre Rechte
-
-Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:
-
-- Recht auf Auskunft
-- Recht auf Berichtigung oder Löschung
-- Recht auf Einschränkung der Verarbeitung
-- Recht auf Widerspruch gegen die Verarbeitung
-- Recht auf Datenübertragbarkeit
-
-**Kontakt:** hello@xf2.io
+Nicht notwendige Cookies und Tracking (z. B. Reichweitenmessung, Marketing-Pixel) setzen wir nur mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Sie jederzeit widerrufen können. Details siehe Cookie-Richtlinie.

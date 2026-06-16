@@ -1,49 +1,82 @@
-export interface Product {
-  product_id: string | number;
+import { FUNNEL_COMPANY_ID, FUNNEL_API } from "@/funnel-config";
+import { track } from "@/lib/funnel";
+
+/**
+ * Storefront checkout — talks to LinkWorld so the company collects payments
+ * into its own connected account. fetchProducts() lists the live catalog;
+ * checkout() creates a hosted payment session and redirects to it. Managed
+ * file — do not edit; build the cart/catalog UI on top of these helpers.
+ */
+const API = FUNNEL_API || "https://app.linkworld.ai";
+const COMPANY_ID = FUNNEL_COMPANY_ID || "";
+
+export type Product = {
+  id: string;
   name: string;
-  description?: string;
+  description: string | null;
   price_cents: number;
   currency: string;
-  image_url?: string;
-  stock?: number | null;
-}
+  image_url: string | null;
+  stock: number | null;
+};
 
-export interface CartItem {
-  product_id: string | number;
-  quantity: number;
-}
+export type CartItem = { product_id: string; quantity: number };
 
+/** Live product catalog for this company (empty when not configured). */
 export async function fetchProducts(): Promise<Product[]> {
+  if (!COMPANY_ID) return [];
   try {
-    const res = await fetch("/api/products", {
-      cache: "no-store",
-      next: { revalidate: 0 },
-    } as RequestInit);
-    if (!res.ok) return [];
-    const data = await res.json();
-    return Array.isArray(data) ? data : [];
+    const r = await fetch(`${API}/api/companies/${COMPANY_ID}/products/public`);
+    if (!r.ok) return [];
+    const data = await r.json();
+    return (data.products || []) as Product[];
   } catch {
     return [];
   }
 }
 
-export async function checkout(items: CartItem[]): Promise<void> {
-  const res = await fetch("/api/checkout", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ items }),
-  });
-  if (!res.ok) throw new Error("Checkout failed");
-  const { url } = await res.json();
-  if (url) window.location.href = url;
+/** Format integer cents as a localized price string. */
+export function formatPrice(cents: number, currency = "EUR"): string {
+  return new Intl.NumberFormat(undefined, {
+    style: "currency",
+    currency: currency || "EUR",
+  }).format((cents || 0) / 100);
 }
 
-export function formatPrice(
-  price_cents: number,
-  currency: string = "EUR"
-): string {
-  return new Intl.NumberFormat("de-DE", {
-    style: "currency",
-    currency,
-  }).format(price_cents / 100);
+/**
+ * Start checkout for a basket: creates a hosted payment session and redirects
+ * the browser to it. Fires the 'intent' funnel step. Returns false if checkout
+ * could not be started (the caller can show an error).
+ */
+export async function checkout(
+  items: CartItem[],
+  opts: { customerEmail?: string; successUrl?: string } = {},
+): Promise<boolean> {
+  if (!COMPANY_ID || !items.length) return false;
+  try {
+    track("intent");
+    let session: string | undefined;
+    if (typeof window !== "undefined") {
+      session = sessionStorage.getItem("lw_funnel_session") || undefined;
+    }
+    const r = await fetch(`${API}/api/companies/${COMPANY_ID}/checkout`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        items,
+        customer_email: opts.customerEmail,
+        session_id: session,
+        success_url: opts.successUrl,
+      }),
+    });
+    if (!r.ok) return false;
+    const data = await r.json();
+    if (data.checkout_url) {
+      window.location.href = data.checkout_url as string;
+      return true;
+    }
+    return false;
+  } catch {
+    return false;
+  }
 }
