@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><style id='brand'>:root{
+  --bg:#0b0b0c; --surface:#141417; --surface-2:#1c1c21;
+  --fg:#f5f5f7; --fg-muted:#a1a1aa; --border:#26262b;
+  --accent:#3b82f6; --accent-fg:#fff; --radius:14px; --maxw:1100px;
+  --font:'Inter',system-ui,-apple-system,Segoe UI,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--fg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.hero{padding:140px 0 90px;text-align:center}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,4vw,2.8rem);letter-spacing:-.01em}
+.muted{color:var(--fg-muted)}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-fg);padding:14px 28px;border-radius:var(--radius);font-weight:600;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,opacity .15s ease}
+.btn:hover{transform:translateY(-2px);opacity:.92}
+.btn-ghost{background:transparent;color:var(--fg);border:1px solid var(--border)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px}
+.grid{display:grid;gap:24px}
+@media(max-width:640px){.section{padding:64px 0}.hero{padding:96px 0 64px}}
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XF2 MastLOCK – Tool-Free Foil Mast Mounting | XFLOOW</title>
+<style>
+  /* ── BRAND OVERRIDES & CUSTOM VARS ── */
+  :root {
+    --bg: #080c12;
+    --surface: #0e1520;
+    --fg: #f0f4ff;
+    --fg-muted: #7a8ba8;
+    --accent: #00c8f0;
+    --accent-glow: rgba(0,200,240,0.18);
+    --accent-dark: #0099bb;
+    --border: rgba(0,200,240,0.15);
+    --radius: 12px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* UTILITY */
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .section { padding: 96px 0; }
+  .muted { color: var(--fg-muted); }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  .grid { display: grid; gap: 24px; }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background: #1adcff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,200,240,0.35);
+  }
+  .btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 13px 35px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border: 2px solid var(--accent);
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+  }
+  .btn-ghost:hover {
+    background: var(--accent-glow);
+    transform: translateY(-2px);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(8,12,18,0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .nav-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--fg);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--fg-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { display: flex; gap: 12px; align-items: center; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,200,240,0.09) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 80%, rgba(0,100,180,0.12) 0%, transparent 60%),
+      var(--bg);
+  }
+  /* Animated water ripple lines */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        -12deg,
+        transparent,
+        transparent 60px,
+        rgba(0,200,240,0.025) 60px,
+        rgba(0,200,240,0.025) 61px
+      );
+    animation: drift 18s linear infinite;
+  }
+  @keyframes drift {
+    from { transform: translateX(0); }
+    to { transform: translateX(61px); }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    background: rgba(0,200,240,0.1);
+    border: 1px solid var(--border);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
+  }
+  .hero h1 .accent { color: var(--accent); }
+  .hero-product-name {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--fg-muted);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    color: var(--fg-muted);
+    max-width: 520px;
+    margin-bottom: 40px;
+    line-height: 1.75;
+  }
+  .hero-cta-group { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .hero-ship-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--fg-muted);
+    margin-top: 28px;
+  }
+  .hero-ship-badge svg { color: var(--accent); }
+
+  /* Floating foil visual */
+  .hero-visual {
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    width: min(520px, 45vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .foil-graphic {
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+  }
+  .foil-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0,200,240,0.12);
+    animation: expand 4s ease-in-out infinite;
+  }
+  .foil-ring:nth-child(2) { inset: 10%; animation-delay: 1.3s; }
+  .foil-ring:nth-child(3) { inset: 22%; animation-delay: 2.6s; }
+  @keyframes expand {
+    0%,100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.03); }
+  }
+  .foil-center {
+    position: absolute;
+    inset: 30%;
+    background: radial-gradient(circle, rgba(0,200,240,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%,100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+  /* Abstract foil cross shape */
+  .foil-shape {
+    position: absolute;
+    inset: 25%;
+  }
+  .foil-mast {
+    position: absolute;
+    left: 50%; top: 8%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 84%;
+    background: linear-gradient(180deg, var(--accent) 0%, rgba(0,200,240,0.3) 100%);
+    border-radius: 3px;
+    box-shadow: 0 0 20px rgba(0,200,240,0.5);
+  }
+  .foil-wing {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 14px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,200,240,0.6) 30%, var(--accent) 50%, rgba(0,200,240,0.6) 70%, transparent 100%);
+    border-radius: 100px;
+    box-shadow: 0 0 24px rgba(0,200,240,0.4);
+  }
+  .foil-stab {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 55%;
+    height: 8px;
+    background: linear-gradient(90deg, transparent 0%, rgba(0,200,240,0.4) 30%, rgba(0,200,240,0.7) 50%, rgba(0,200,240,0.4) 70%, transparent 100%);
+    border-radius: 100px;
+  }
+  .lock-badge {
+    position: absolute;
+    top: 42%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px; height: 52px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 40px rgba(0,200,240,0.6), 0 0 80px rgba(0,200,240,0.2);
+    animation: lockPulse 2.5s ease-in-out infinite;
+    z-index: 10;
+    font-size: 1.4rem;
+  }
+  @keyframes lockPulse {
+    0%,100% { box-shadow: 0 0 40px rgba(0,200,240,0.6), 0 0 80px rgba(0,200,240,0.2); }
+    50% { box-shadow: 0 0 60px rgba(0,200,240,0.9), 0 0 120px rgba(0,200,240,0.35); }
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--accent);
+    color: #000;
+    padding: 14px 0;
+    overflow: hidden;
+  }
+  .strip-inner {
+    display: flex;
+    gap: 60px;
+    white-space: nowrap;
+    animation: marquee 20s linear infinite;
+    width: max-content;
+  }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── PROBLEM / SOLUTION ── */
+  .problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .problem-col {
+    background: #0a0e15;
+    border: 1px solid rgba(255,80,80,0.12);
+    padding: 48px 40px;
+  }
+  .solution-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .solution-col::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(0,200,240,0.06) 0%, transparent 70%);
+  }
+  .col-label {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .label-problem { color: #ff6060; }
+  .label-solution { color: var(--accent); }
+  .col-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 2px;
+  }
+  .label-problem::before { background: #ff6060; }
+  .label-solution::before { background: var(--accent); }
+  .problem-col h3, .solution-col h3 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .pain-list, .gain-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .pain-list li, .gain-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--fg-muted);
+    line-height: 1.5;
+  }
+  .pain-icon { color: #ff6060; font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+  .gain-icon { color: var(--accent); font-size: 1rem; margin-top: 1px; flex-shrink: 0; }
+
+  /* ── FEATURES ── */
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--fg-muted);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 56px;
+  }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .feature-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .feature-card:hover::before { opacity: 1; }
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .feature-card h4 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .feature-card p {
+    font-size: 0.9rem;
+    color: var(--fg-muted);
+    line-height: 1.65;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps-section { background: var(--surface); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: calc(16.66% + 24px);
+    right: calc(16.66% + 24px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 50%, var(--accent) 100%);
+    opacity: 0.3;
+  }
+  .step {
+    padding: 0 32px;
+    text-align: center;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -8px;
+    top: 24px;
+    color: var(--accent);
+    opacity: 0.4;
+    font-size: 1.4rem;
+  }
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(0,200,240,0.12);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin: 0 auto 20px;
+  }
+  .step h4 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .step p { font-size: 0.9rem; color: var(--fg-muted); line-height: 1.6; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 80px 0 0;
+  }
+  .stat-item {
+    background: var(--bg);
+    padding: 36px 24px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label { font-size: 0.82rem; color: var(--fg-muted); line-height: 1.4; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .testimonial-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color 0.3s, transform 0.2s;
+  }
+  .testimonial-card:hover {
+    border-color: rgba(0,200,240,0.35);
+    transform: translateY(-3px);
+  }
+  .stars { color: var(--accent); font-size: 0.9rem; letter-spacing: 2px; }
+  .testimonial-card blockquote {
+    font-size: 0.92rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    font-style: italic;
+    flex: 1;
+  }
+  .testimonial-card blockquote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 0;
+    vertical-align: -0.4em;
+    margin-right: 4px;
+    font-style: normal;
+    opacity: 0.6;
+  }
+  .reviewer-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .reviewer-role { font-size: 0.78rem; color: var(--fg-muted); }
+
+  /* ── COMPATIBILITY ── */
+  .compat-section { background: var(--surface); }
+  .compat-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 32px;
+  }
+  .compat-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,200,240,0.07);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--fg-muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .compat-badge:hover { border-color: var(--accent); color: var(--fg); }
+  .compat-badge::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 800;
+  }
+
+  /* ── PRICING ── */
+  .pricing-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .pricing-card {
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    padding: 52px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,200,240,0.08) 0%, transparent 70%);
+  }
+  .price-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #000;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .price-amount {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: var(--fg);
+    line-height: 1;
+    margin-bottom: 4px;
+    position: relative;
+  }
+  .price-amount sup {
+    font-size: 1.5rem;
+    font-weight: 700;
+    vertical-align: super;
+    color: var(--fg-muted);
+  }
+  .price-vat {
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    margin-bottom: 28px;
+  }
+  .price-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .price-features li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    color: var(--fg-muted);
+  }
+  .price-features li::before {
+    content: '✓';
+    color: var(--accent);
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .pricing-info h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .pricing-info p {
+    font-size: 0.95rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .ship-promise {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0,200,240,0.07);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+  }
+  .ship-promise-icon { font-size: 1.4rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050709;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand p {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    line-height: 1.7;
+    margin-top: 12px;
+    max-width: 260px;
+  }
+  .footer-col h5 {
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    font-size: 0.88rem;
+    color: var(--fg-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul a:hover { color: var(--accent); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+  }
+  .footer-logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--fg);
+    letter-spacing: -0.02em;
+  }
+  .footer-logo span { color: var(--accent); }
+
+  /* ── SCROLL REVEAL (default visible) ── */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.will-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .features-grid,
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr; gap: 32px; }
+    .steps-grid::before { display: none; }
+    .step:not(:last-child)::after { display: none; }
+    .problem-solution { grid-template-columns: 1fr; }
+    .pricing-wrapper { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .hero-visual { display: none; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 580px) {
+    .features-grid,
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">XF<span>2</span></a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#testimonials">Riders</a></li>
+      <li><a href="#pricing">Shop</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#pricing" class="btn" style="padding:10px 24px;font-size:0.88rem;">Buy Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-eyebrow">MastLOCK — Ships within 24h</div>
+    <p class="hero-product-name">XFLOOW presents</p>
+    <h1>Forget the<br><span class="accent">screws.</span><br>Just ride.</h1>
+    <p>MastLOCK is the world's most elegant quick-release foil mast mounting system. One hand grip. Zero tools. Total precision. Click in and get on the water.</p>
+    <div class="hero-cta-group">
+      <a href="#pricing" class="btn">Buy MastLOCK — €319</a>
+      <a href="#how-it-works" class="btn-ghost">See How It Works</a>
+    </div>
+    <div class="hero-ship-badge">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      In stock &nbsp;·&nbsp;
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      Worldwide shipping &nbsp;·&nbsp;
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      100% brand compatible
+    </div>
+  </div>
+
+  <!-- Abstract foil visual -->
+  <div class="hero-visual">
+    <div class="foil-graphic">
+      <div class="foil-ring"></div>
+      <div class="foil-ring"></div>
+      <div class="foil-ring"></div>
+      <div class="foil-center"></div>
+      <div class="foil-shape">
+        <div class="foil-mast"></div>
+        <div class="foil-wing"></div>
+        <div class="foil-stab"></div>
+        <div class="lock-badge">🔒</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MARQUEE STRIP ── -->
+<div class="strip">
+  <div class="strip-inner" aria-hidden="true">
+    <div class="strip-item">🔒 Tool-Free Setup</div>
+    <div class="strip-item">⚡ One-Hand Click-In</div>
+    <div class="strip-item">🌊 Secure on Water</div>
+    <div class="strip-item">✅ 100% Brand Compatible</div>
+    <div class="strip-item">📦 Ships in 24 Hours</div>
+    <div class="strip-item">🎯 Baseplate Shimming</div>
+    <div class="strip-item">🔁 Repeatable Assembly</div>
+    <div class="strip-item">🛠 No Loose Screws</div>
+    <!-- duplicate for seamless loop -->
+    <div class="strip-item">🔒 Tool-Free Setup</div>
+    <div class="strip-item">⚡ One-Hand Click-In</div>
+    <div class="strip-item">🌊 Secure on Water</div>
+    <div class="strip-item">✅ 100% Brand Compatible</div>
+    <div class="strip-item">📦 Ships in 24 Hours</div>
+    <div class="strip-item">🎯 Baseplate Shimming</div>
+    <div class="strip-item">🔁 Repeatable Assembly</div>
+    <div class="strip-item">🛠 No Loose Screws</div>
+  </div>
+</div>
+
+<!-- ── PROBLEM / SOLUTION ── -->
+<section class="section">
+  <div class="container">
+    <div class="reveal problem-solution">
+      <div class="problem-col">
+        <div class="col-label label-problem">The old way</div>
+        <h3>Foil assembly is unnecessarily complicated.</h3>
+        <ul class="pain-list">
+          <li><span class="pain-icon">✗</span>Four screws to find and thread every session</li>
+          <li><span class="pain-icon">✗</span>Nuts rolling into sand or water</li>
+          <li><span class="pain-icon">✗</span>Tools you always forget at the car</li>
+          <li><span class="pain-icon">✗</span>Different setups each time — no consistency</li>
+          <li><span class="pain-icon">✗</span>Wasted time and lost nerves before you even hit the water</li>
+        </ul>
+      </div>
+      <div class="solution-col">
+        <div class="col-label label-solution">MastLOCK</div>
+        <h3>Click in. Ride. Release. In seconds.</h3>
+        <ul class="gain-list">
+          <li><span class="gain-icon">✓</span>Permanently installed quick-release mechanism</li>
+          <li><span class="gain-icon">✓</span>Board and mast stay prepared — lock with one hand grip</li>
+          <li><span class="gain-icon">✓</span>Zero tools. Zero loose parts. Zero stress.</li>
+          <li><span class="gain-icon">✓</span>Repeatable, identical assembly every single time</li>
+          <li><span class="gain-icon">✓</span>Precision baseplate shimming for fine-tuned foil trim</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES ── -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Engineered down to<br>every millimeter.</h2>
+      <p class="section-sub">MastLOCK isn't just a convenience upgrade — it's a precision system built for serious foilers who demand reliability, speed and repeatability every session.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-icon">⚡</span>
+        <h4>One-Hand Quick Release</h4>
+        <p>Lock and release your mast with a single hand grip. The entire process takes seconds — no awkward angles, no fumbling with hardware.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🔧</span>
+        <h4>Zero Tools Required</h4>
+        <p>The system is permanently installed on your board and mast. Once set up, you never need a spanner, hex key or screwdriver at the beach again.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🎯</span>
+        <h4>Repeatable Precision</h4>
+        <p>Every assembly is identical to the last. Perfect for sharing equipment between multiple riders or switching setups mid-session without guessing.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🧲</span>
+        <h4>Rock-Solid Connection</h4>
+        <p>Nothing rattles. Nothing shifts. MastLOCK creates a secure, stable bond between board and mast — as solid as any traditional bolt system, but faster.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">📐</span>
+        <h4>Baseplate Shimming</h4>
+        <p>Fine-tune your foil trim with precision shims. Adjust the angle between board and foil system to optimise handling and performance for your style.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-icon">🌐</span>
+        <h4>100% Brand Compatible</h4>
+        <p>MastLOCK works with all major foil brands. No proprietary lock-in — use your existing wings, masts and boards from any manufacturer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section class="section steps-section" id="how-it-works">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three steps.<br>Seconds flat.</h2>
+      <p class="section-sub" style="margin-bottom:56px;">The MastLOCK system replaces the four-screw ritual with the world's most satisfying click.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h4>Install Once</h4>
+        <p>Mount the MastLOCK system on your board and mast. This one-time setup takes minutes and stays permanently in place — no removal needed.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h4>Click In</h4>
+        <p>Slide your mast into position and engage the quick-release lever with one hand. It locks solid — you'll feel and hear the satisfying click.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h4>Ride &amp; Release</h4>
+        <p>Hit the water. When you're done, lever up — mast out. Done. No tools, no screws in the sand. Pack up and leave in seconds.</p>
+      </div>
+    </div>
+
+    <div class="stats-bar reveal">
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Tools needed<br>at the beach</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Hand grip to<br>lock or release</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">24h</div>
+        <div class="stat-label">Worldwide shipping<br>from stock</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">Brand &amp; mast<br>compatibility</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="section" id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Rider Reviews</div>
+      <h2 class="section-title">What the foil community says.</h2>
+      <p class="section-sub">From wing foilers to pump surfers — real riders, real results.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>I set up and take down my foil significantly more often than before, simply because it no longer costs me any nerves. Lever up, mast out, done. No tools, no screws in the sand. MastLOCK makes the whole process relaxed – just as it should be.</blockquote>
+        <div>
+          <div class="reviewer-name">Lukas M.</div>
+          <div class="reviewer-role">Wing Foiler · Spain</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>Finally no more screwing at the spot. I didn't think a mounting system could make such a difference. MastLOCK is mounted in seconds, nothing rattles, nothing gets lost. I particularly like that I can always mount my setup exactly the same way.</blockquote>
+        <div>
+          <div class="reviewer-name">Tom R.</div>
+          <div class="reviewer-role">Pump &amp; Wing Foiler · Austria</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <blockquote>We've now converted all our boards to MastLOCK and can quickly switch between different setups. The assembly is always the same and reproducible. Especially when several people use the same equipment, the system is a huge advantage for the whole crew.</blockquote>
+        <div>
+          <div class="reviewer-name">Club Team</div>
+          <div class="reviewer-role">Foil Collective · Germany</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMPATIBILITY ── -->
+<section class="section compat-section">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Compatibility</div>
+      <h2 class="section-title">Works with every brand<br>you already ride.</h2>
+      <p class="section-sub">MastLOCK is engineered to be a universal system. Whatever foil brand is in your quiver, MastLOCK has you covered.</p>
+      <div class="compat-badges">
+        <div class="compat-badge">Cabrinha</div>
+        <div class="compat-badge">F-One</div>
+        <div class="compat-badge">Slingshot</div>
+        <div class="compat-badge">Naish</div>
+        <div class="compat-badge">Lift Foils</div>
+        <div class="compat-badge">Axis Foils</div>
+        <div class="compat-badge">Armstrong</div>
+        <div class="compat-badge">Unifoil</div>
+        <div class="compat-badge">Moses</div>
+        <div class="compat-badge">Duotone</div>
+        <div class="compat-badge">North</div>
+        <div class="compat-badge">All other brands</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title" style="margin-bottom:56px;">One system.<br>Every session.</h2>
+    </div>
+    <div class="pricing-wrapper">
+      <div class="pricing-card reveal">
+        <div class="price-badge">In Stock — Ships 24h</div>
+        <div class="price-amount"><sup>EUR</sup>319</div>
+        <div class="price-vat">incl. VAT · Worldwide shipping calculated at checkout</div>
+        <ul class="price-features">
+          <li>Complete MastLOCK quick-release system</li>
+          <li>Ultra slim, precision-engineered build</li>
+          <li>Baseplate shims for trim adjustment</li>
+          <li>Compatible with all foil brands</li>
+          <li>Permanent install — zero ongoing costs</li>
+          <li>Full setup guide included</li>
+        </ul>
+        <a href="https://www.xfloow.com" target="_blank" rel="noopener" class="btn" style="width:100%;text-align:center;display:block;">Buy MastLOCK Now →</a>
+      </div>
+      <div class="pricing-info reveal">
+        <h3>Why MastLOCK is worth every cent.</h3>
+        <p>Think about how many sessions you lose to the frustration of screwing in a hot carpark, sandy beach or choppy shore break. MastLOCK pays for itself the first time you lock in and launch in under 10 seconds.</p>
+        <p>It's not just a convenience item — it's a performance upgrade. Consistent, repeatable assembly means your foil trim is always dialled in, your hardware stays intact, and your focus stays on the water.</p>
+        <div class="ship-promise">
+          <div class="ship-promise-icon">📦</div>
+          <div>
+            <strong style="color:var(--fg);">Ready to ship in 24 hours.</strong><br>
+            <span>Order today, ride this weekend. Worldwide delivery available.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">XF<span>2</span> — XFLOOW</div>
+        <p>Engineering better sessions for foil riders worldwide. MastLOCK is the tool-free quick-release system that makes foil assembly as effortless as the ride itself.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Product</h5>
+        <ul>
+          <li><a href="https://www.xfloow.com">MastLOCK</a></li>
+          <li><a href="https://www.xfloow.com">Baseplate Shims</a></li>
+          <li><a href="https://www.xfloow.com">Shop</a></li>
+          <li><a href="https://www.xfloow.com">Dealer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Learn</h5>
+        <ul>
+          <li><a href="https://www.xfloow.com">XF Magazine</a></li>
+          <li><a href="https://www.xfloow.com">How It Works</a></li>
+          <li><a href="https://www.xfloow.com">Baseplate Shimming</a></li>
+          <li><a href="https://www.xfloow.com">Compatibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="https://www.xfloow.com">About</a></li>
+          <li><a href="https://www.xfloow.com">Contact</a></li>
+          <li><a href="https://www.xfloow.com">Become a Dealer</a></li>
+          <li><a href="https://www.xfloow.com">Imprint</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 XFLOOW · <a href="https://www.xfloow.com" style="color:var(--accent);text-decoration:none;">www.xfloow.com</a></div>
+      <div style="display:flex;gap:24px;">
+        <span>🇩🇪 DE</span>
+        <span>🇬🇧 EN</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll-reveal: mark elements as will-reveal FIRST, then observe
+  document.addEventListener('DOMContentLoaded', function () {
+    var reveals = document.querySelectorAll('.reveal');
+
+    // First pass: flag them for animation only if IntersectionObserver is available
+    if ('IntersectionObserver' in window) {
+      reveals.forEach(function (el) {
+        el.classList.add('will-reveal');
+      });
+
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('will-reveal');
+            entry.target.classList.add('revealed');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    // Staggered children in grid cards
+    var cards = document.querySelectorAll('.feature-card.reveal, .testimonial-card.reveal, .step.reveal');
+    cards.forEach(function (el, i) {
+      el.style.transitionDelay = (i % 3) * 0.1 + 's';
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Nav shadow on scroll
+    var nav = document.querySelector('nav');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 40) {
+        nav.style.boxShadow = '0 4px 40px rgba(0,0,0,0.5)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    }, { passive: true });
+  });
+</script>
+</body>
+</html>
